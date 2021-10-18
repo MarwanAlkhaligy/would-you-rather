@@ -1,12 +1,11 @@
-import React, {Component} from "react"
+import React from "react"
 import { connect } from 'react-redux'
 
-class Leaderboard extends Component {
-    render() {
-      const users = this.props.users
+const Leaderboard = (props) =>  {
+      const { users } = props
       return (
-        Object.keys(users).map((id)=> { 
-          console.log('user : ',id)
+        Object.keys(users).map( ( id )=> { 
+
           const user = users[id]
           return (
           <div className='user' key={id}>
@@ -18,7 +17,7 @@ class Leaderboard extends Component {
                     />
                     <span>{user.name}</span>
                 </div>
-                <div class="vl"></div>
+                <div className="vl"></div>
                 <div className="question-info">  
                     <div className="detials">
                         <p>Number of Questions : {user.questions.length}</p>
@@ -30,7 +29,6 @@ class Leaderboard extends Component {
       
         )})
       )
-    }
 }
 
 const geneateUserScore = (users) => {

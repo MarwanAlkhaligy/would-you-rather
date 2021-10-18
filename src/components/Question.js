@@ -1,22 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 
- class Question extends Component {
-    toQuestion = (e, id) => {
-        e.preventDefault()
-        this.props.history.push(`/questions/${id}`)
-      }
-     render() {
-        const question = this.props.question
-     
-        const user = this.props.user
+const Question = (props) => {
+        const { question, user } = props
 
-         if (question === null) {
+        if (question === null) {
             return <p>This Question doesn't exist</p>
-         }
-      
+        }
          return (
             <div className='question'>
                 <div className='user-info'>
@@ -42,12 +34,7 @@ import { Link } from 'react-router-dom'
                 </div>
            </div>
          )
-
-
-     }
- }
- 
-            
+}
 const mapStateToProps = ({users, questions} ,{id }) => {
     const question = questions[id]
     const user = question ? users[question.author] : null
